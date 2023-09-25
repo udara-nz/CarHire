@@ -4,6 +4,12 @@
  */
 package carhire.view;
 
+import carhire.controller.CarController;
+import carhire.dto.CarDto;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author UDARA DHANUSHKA
@@ -14,7 +20,9 @@ public class ManageCars extends javax.swing.JPanel {
      * Creates new form ManageCars
      */
     public ManageCars() {
+        CarController carController = new CarController();
         initComponents();
+        loadAllItems();
     }
 
     /**
@@ -251,14 +259,70 @@ public class ManageCars extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void updateCar() {
+        CarDto carDto = new CarDto(idText.getText(), 
+                modelText.getText(), 
+                vehicleText.getText(), 
+                brandText.getText(), 
+                yomText.getText(), 
+                Double.parseDouble(priceText.getText());
         
+        String resp = null;
+        try {
+            resp = carController.updateCar(carDto);
+        } catch (Exception ex) {
+            Logger.getLogger(ManageCars.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showInputDialog(this, resp);
+            clear();
+            loadAllItems();
     }
 
     private void saveCar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        CarDto carDto = new CarDto(idText.getText(), 
+                modelText.getText(), 
+                vehicleText.getText(), 
+                brandText.getText(), 
+                yomText.getText(), 
+                Double.parseDouble(priceText.getText());
+        
+        String resp = carController.saveCar(carDto);
+        JOptionPane.showInputDialog(this, resp);
+            clear();
+            loadAllItems();
+   
     }
 
     private void deleteCar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String resp = carController.deleteCar(idText.getText());
+            JOptionPane.showInputDialog(this, resp);
+            clear();
+            loadAllItems();
+    
+    }
+
+    private void clear() {
+    
+    }
+
+    private void loadAllItems() {
+        
+    }
+
+    private static class carController {
+
+        private static String updateCar(CarDto carDto) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static String saveCar(CarDto carDto) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static String deleteCar(String text) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public carController() {
+        }
     }
 }
