@@ -5,6 +5,7 @@
 package carhire.dao.custom;
 
 import carhire.dao.CrudDao;
+import carhire.entity>dao.CrudDao;
 
 /**
  *
