@@ -14,10 +14,10 @@ import java.util.ArrayList;
  * @author UDARA DHANUSHKA
  */
 public class CarController {
-    CarService carService = (CarService) ServiceFactory.getIntance().getService(ServiceFactory.ServiceType.Car);
+    CarService carService = (CarService) ServiceFactory.getIntance().getService(ServiceFactory.ServiceType.CAR);
     
     public String addCar(CarDto carDto) throws Exception {
-        return carService.addCar(CarDto);
+        return carService.addCar(carDto);
     }
 
     //public ArrayList<CarDto> getAllItem() throws Exception {
